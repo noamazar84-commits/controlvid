@@ -1,0 +1,21 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Specific security rule constraint for administrator access on affiliate/financial data
+    match /affiliates/{affiliateId} {
+      allow read, write: if request.auth.uid == 'YOUR_ADMIN_UID';
+    }
+    match /referrals/{referralId} {
+      allow read, write: if request.auth.uid == 'YOUR_ADMIN_UID';
+    }
+    match /financials/{finId} {
+      allow read, write: if request.auth.uid == 'YOUR_ADMIN_UID';
+    }
+    match /users/{userId} {
+      allow read, write: if request.auth.uid == 'YOUR_ADMIN_UID' || (request.auth != null && request.auth.uid == userId);
+    }
+    match /{document=**} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "ViralFlow.ai",
+  "description": "Scale faceless channels using AI Video Generation and automated Shadow Channels with integrated teleprompter.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
