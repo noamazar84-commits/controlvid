@@ -175,6 +175,9 @@ export default function LandingPage({ onStartGenerating }: LandingPageProps) {
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isFaqOpen, setIsFaqOpen] = useState(false);
   const [isBlogOpen, setIsBlogOpen] = useState(false);
+  const [isAffiliateOpen, setIsAffiliateOpen] = useState(false);
+  const [affiliateHandle, setAffiliateHandle] = useState("creator");
+  const [affiliateCopied, setAffiliateCopied] = useState(false);
   const [showExitIntentModal, setShowExitIntentModal] = useState(false);
   const [exitEmail, setExitEmail] = useState("");
   const [exitSubmitStatus, setExitSubmitStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
@@ -1982,6 +1985,133 @@ export default function LandingPage({ onStartGenerating }: LandingPageProps) {
         </div>
       </section>
 
+      {/* High-Converting 50% Lifetime Affiliate Program Showcase Section */}
+      <section className="relative z-10 py-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto my-8">
+        <div className="relative rounded-3xl bg-gradient-to-br from-[#18181b] via-[#121214] to-black border border-white/10 p-8 sm:p-12 shadow-2xl overflow-hidden text-left font-sans">
+          
+          {/* Background Ambient Glow */}
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#38bdf8]/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            {/* Left Column: Info & Earnings Callout */}
+            <div className="lg:col-span-7 space-y-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#38bdf8]/10 border border-[#38bdf8]/20 text-[#38bdf8] text-xs font-mono font-bold uppercase tracking-wider">
+                <DollarSign className="w-3.5 h-3.5" />
+                <span>50% Lifetime Recurring Commissions</span>
+              </div>
+
+              <h2 className="text-2xl sm:text-4xl font-black text-white uppercase tracking-tight leading-tight">
+                Partner with ViralFlow.ai & <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#38bdf8] via-emerald-400 to-teal-300">Earn Recurring Revenue</span>
+              </h2>
+
+              <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
+                Promote the leading AI faceless video automation platform to your audience, creators, or email subscribers. Earn <strong className="text-white font-bold">50% lifetime recurring commission</strong> on every active user you refer — paid out automatically every month.
+              </p>
+
+              {/* Commission Stats Pills */}
+              <div className="grid grid-cols-3 gap-3 pt-2">
+                <div className="p-3.5 rounded-2xl bg-black/50 border border-white/10 text-center">
+                  <div className="text-lg sm:text-xl font-black text-[#38bdf8]">50%</div>
+                  <div className="text-[10px] text-slate-400 font-mono uppercase tracking-wider mt-0.5">Recurring Rate</div>
+                </div>
+                <div className="p-3.5 rounded-2xl bg-black/50 border border-white/10 text-center">
+                  <div className="text-lg sm:text-xl font-black text-emerald-400">60-Day</div>
+                  <div className="text-[10px] text-slate-400 font-mono uppercase tracking-wider mt-0.5">Cookie Duration</div>
+                </div>
+                <div className="p-3.5 rounded-2xl bg-black/50 border border-white/10 text-center">
+                  <div className="text-lg sm:text-xl font-black text-amber-400">$0 Min</div>
+                  <div className="text-[10px] text-slate-400 font-mono uppercase tracking-wider mt-0.5">Fast Payouts</div>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-4 pt-2">
+                <button
+                  onClick={() => setIsAffiliateOpen(true)}
+                  className="px-6 py-3.5 rounded-xl bg-[#38bdf8] hover:bg-white text-black font-black text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer shadow-lg shadow-[#38bdf8]/20 flex items-center gap-2"
+                >
+                  <Rocket className="w-4 h-4 text-black" />
+                  <span>Join Affiliate Program</span>
+                </button>
+                <button
+                  onClick={onStartGenerating}
+                  className="px-6 py-3.5 rounded-xl bg-white/5 hover:bg-white/10 text-white border border-white/10 text-xs font-bold uppercase tracking-wider transition-all cursor-pointer flex items-center gap-2"
+                >
+                  <span>Explore Product First</span>
+                  <ArrowRight className="w-4 h-4 text-slate-400" />
+                </button>
+              </div>
+            </div>
+
+            {/* Right Column: Live Referral Link Generator & Calculator Preview */}
+            <div className="lg:col-span-5 bg-black/70 border border-white/10 rounded-2xl p-6 space-y-5">
+              <div className="flex items-center justify-between border-b border-white/10 pb-3">
+                <div className="flex items-center gap-2 text-xs font-bold text-white uppercase tracking-wider">
+                  <Share2 className="w-4 h-4 text-[#38bdf8]" />
+                  <span>Instant Link Generator</span>
+                </div>
+                <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+                  Active Partner Node
+                </span>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-[11px] font-mono font-bold text-slate-400 uppercase">Custom Referral Code / Handle</label>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs text-slate-500 font-mono">viralflow.ai/?aff=</span>
+                  <input
+                    type="text"
+                    value={affiliateHandle}
+                    onChange={(e) => setAffiliateHandle(e.target.value.toLowerCase().replace(/[^a-z0-9_-]/g, ""))}
+                    placeholder="yourhandle"
+                    className="flex-1 px-3 py-2 rounded-lg bg-neutral-900 border border-white/15 text-white font-mono text-xs focus:outline-none focus:border-[#38bdf8]"
+                  />
+                </div>
+              </div>
+
+              <div className="p-3.5 rounded-xl bg-neutral-900/80 border border-white/10 space-y-2">
+                <div className="text-[10px] font-mono text-slate-400 uppercase">Your Shareable Partner Link</div>
+                <div className="text-xs font-mono text-[#38bdf8] truncate font-bold">
+                  https://viralflow.ai/?aff={affiliateHandle || "partner"}
+                </div>
+                <button
+                  onClick={() => {
+                    const link = `https://viralflow.ai/?aff=${affiliateHandle || "partner"}`;
+                    navigator.clipboard.writeText(link);
+                    setAffiliateCopied(true);
+                    setTimeout(() => setAffiliateCopied(false), 2000);
+                  }}
+                  className={`w-full py-2.5 rounded-lg text-xs font-black uppercase tracking-wider transition-all cursor-pointer flex items-center justify-center gap-2 ${
+                    affiliateCopied
+                      ? "bg-emerald-500 text-black font-bold"
+                      : "bg-white/10 hover:bg-white/20 text-white border border-white/15"
+                  }`}
+                >
+                  {affiliateCopied ? (
+                    <>
+                      <Check className="w-4 h-4" />
+                      <span>Referral Link Copied!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Share2 className="w-4 h-4 text-[#38bdf8]" />
+                      <span>Copy Affiliate Link</span>
+                    </>
+                  )}
+                </button>
+              </div>
+
+              <div className="pt-2 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400">
+                <span>Estimated Monthly Earnings (10 Users):</span>
+                <span className="font-bold text-emerald-400 font-mono text-xs">$240.00 / mo</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       {/* Technical Trust Marquee at the bottom of the page structure */}
       <div className="py-6 mt-6">
         <TechnicalTrustMarquee />
@@ -1992,6 +2122,13 @@ export default function LandingPage({ onStartGenerating }: LandingPageProps) {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Horizontal and well-spaced links */}
           <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-4 mb-6 text-xs sm:text-sm font-sans font-medium text-white">
+            <button
+              onClick={() => setIsAffiliateOpen(true)}
+              className="hover:text-[#38bdf8] transition-colors cursor-pointer bg-transparent border-none focus:outline-none flex items-center gap-1.5 text-[#38bdf8] font-bold"
+            >
+              <DollarSign className="w-3.5 h-3.5" />
+              <span>Affiliate Program (50%)</span>
+            </button>
             <button
               onClick={() => setIsContactOpen(true)}
               className="hover:text-[#38bdf8] transition-colors cursor-pointer bg-transparent border-none focus:outline-none"
@@ -2032,6 +2169,123 @@ export default function LandingPage({ onStartGenerating }: LandingPageProps) {
           </p>
         </div>
       </footer>
+
+      {/* Affiliate Program Portal Modal */}
+      {isAffiliateOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-[fadeIn_0.2s_ease-out]">
+          <div className="relative w-full max-w-3xl bg-[#1a1a20] border border-white/10 rounded-2xl p-6 sm:p-10 shadow-2xl overflow-y-auto max-h-[85vh] text-left font-sans">
+            <button
+              onClick={() => setIsAffiliateOpen(false)}
+              className="absolute top-4 right-4 p-2 text-neutral-400 hover:text-white transition-colors rounded-full hover:bg-white/5 cursor-pointer focus:outline-none bg-transparent border-none"
+            >
+              <X className="h-5 w-5" />
+            </button>
+
+            <div className="mb-6 flex items-center space-x-3 border-b border-white/10 pb-4">
+              <div className="p-3 rounded-xl bg-[#38bdf8]/10 text-[#38bdf8] border border-[#38bdf8]/20">
+                <DollarSign className="h-6 w-6" />
+              </div>
+              <div>
+                <h2 className="text-xl font-black text-white uppercase tracking-tight">ViralFlow Partner Network Portal</h2>
+                <p className="text-[10px] text-neutral-400 uppercase font-mono tracking-widest mt-0.5">50% Lifetime Recurring Commissions • Instant Payout Gateways</p>
+              </div>
+            </div>
+
+            <div className="space-y-6 text-xs sm:text-sm text-neutral-300 leading-relaxed max-h-[55vh] overflow-y-auto pr-2">
+              <section className="space-y-2">
+                <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-[#38bdf8]" />
+                  <span>Program Overview</span>
+                </h3>
+                <p>
+                  Earn <strong>50% recurring lifetime commissions</strong> for every active subscriber you refer to ViralFlow.ai. Whether you are a content creator, agency owner, newsletter operator, or social media marketer, your earnings grow month after month as your referred creators scale their faceless video automation.
+                </p>
+              </section>
+
+              <section className="grid grid-cols-1 sm:grid-cols-3 gap-3 my-4">
+                <div className="p-4 rounded-xl bg-black/60 border border-white/10 space-y-1">
+                  <div className="text-[10px] font-bold text-[#38bdf8] uppercase font-mono">Commission Rate</div>
+                  <div className="text-xl font-black text-white">50% Lifetime</div>
+                  <p className="text-[10px] text-slate-400">Earn every single month your referred user stays subscribed.</p>
+                </div>
+
+                <div className="p-4 rounded-xl bg-black/60 border border-white/10 space-y-1">
+                  <div className="text-[10px] font-bold text-emerald-400 uppercase font-mono">Payout Methods</div>
+                  <div className="text-xl font-black text-white">PayPal, Stripe, Wise</div>
+                  <p className="text-[10px] text-slate-400">Flexible direct payout integrations without minimum delays.</p>
+                </div>
+
+                <div className="p-4 rounded-xl bg-black/60 border border-white/10 space-y-1">
+                  <div className="text-[10px] font-bold text-amber-400 uppercase font-mono">Attribution Window</div>
+                  <div className="text-xl font-black text-white">60-Day Cookie</div>
+                  <p className="text-[10px] text-slate-400">Get credited even if visitors convert up to two months later.</p>
+                </div>
+              </section>
+
+              <section className="space-y-2">
+                <h3 className="text-sm font-bold text-white uppercase tracking-wider">Your Unique Referral Link</h3>
+                <div className="p-4 rounded-xl bg-neutral-900 border border-white/10 space-y-3">
+                  <div className="flex items-center gap-2">
+                    <span className="text-slate-400 font-mono text-xs">Handle / Tracking Tag:</span>
+                    <input
+                      type="text"
+                      value={affiliateHandle}
+                      onChange={(e) => setAffiliateHandle(e.target.value.toLowerCase().replace(/[^a-z0-9_-]/g, ""))}
+                      className="flex-1 px-3 py-1.5 rounded-md bg-black border border-white/15 text-white font-mono text-xs focus:outline-none focus:border-[#38bdf8]"
+                      placeholder="enter_handle"
+                    />
+                  </div>
+                  <div className="p-3 rounded-lg bg-black text-[#38bdf8] font-mono text-xs font-bold truncate">
+                    https://viralflow.ai/?aff={affiliateHandle || "partner"}
+                  </div>
+                  <button
+                    onClick={() => {
+                      const link = `https://viralflow.ai/?aff=${affiliateHandle || "partner"}`;
+                      navigator.clipboard.writeText(link);
+                      setAffiliateCopied(true);
+                      setTimeout(() => setAffiliateCopied(false), 2000);
+                    }}
+                    className={`w-full py-2.5 rounded-lg font-black text-xs uppercase tracking-wider transition-all cursor-pointer flex items-center justify-center gap-2 ${
+                      affiliateCopied ? "bg-emerald-500 text-black font-bold" : "bg-[#38bdf8] hover:bg-white text-black"
+                    }`}
+                  >
+                    {affiliateCopied ? "Link Copied to Clipboard!" : "Copy Shareable Partner Link"}
+                  </button>
+                </div>
+              </section>
+
+              <section className="space-y-2">
+                <h3 className="text-sm font-bold text-white uppercase tracking-wider">Program Terms & Guidelines</h3>
+                <ul className="list-disc list-inside space-y-1 text-slate-400 text-xs">
+                  <li>Self-referrals and account duplication for personal discounts are strictly prohibited.</li>
+                  <li>Bidding on protected trademark terms (e.g. "ViralFlow", "ViralFlow.ai") via paid search ads is prohibited.</li>
+                  <li>Earnings accrue in real-time and payouts are processed on a bi-weekly cycle.</li>
+                </ul>
+              </section>
+            </div>
+
+            <div className="mt-6 border-t border-white/10 pt-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+              <button
+                onClick={() => {
+                  setIsAffiliateOpen(false);
+                  onStartGenerating();
+                }}
+                className="w-full sm:w-auto bg-[#38bdf8] hover:bg-white text-black font-black uppercase tracking-wider text-xs py-3 px-6 rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2"
+              >
+                <span>Launch Workspace & Open Full Affiliate Hub</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+
+              <button
+                onClick={() => setIsAffiliateOpen(false)}
+                className="text-slate-400 hover:text-white text-xs font-bold transition-colors cursor-pointer"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Terms of Use Modal */}
       {isTermsOpen && (
