@@ -1,6 +1,6 @@
 {
-  "name": "ViralFlow.ai",
-  "description": "Scale faceless channels using AI Video Generation and automated Shadow Channels with integrated teleprompter.",
+  "name": "ControlVid.ai",
+  "description": "Your all-in-one AI video engine: Viral Shorts, Fake Text, POV, Split-screen, Long-form (2-10 min) Creation, Long-form to Auto-Clips, E-commerce Ads, DM Lead Automation, and Multi-Channel Scheduling.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
