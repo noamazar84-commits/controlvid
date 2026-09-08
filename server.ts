@@ -4,7 +4,7 @@ import { GoogleGenAI, Type } from "@google/genai";
 import dotenv from "dotenv";
 const firebaseLib: any = {};
 
-import { flexibleKeywordMatch } from "./src/lib/keywordMatcher";
+
 import { metawebookController } from "./src/controllers/metawebookController";
 
 dotenv.config();
