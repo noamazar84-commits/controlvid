@@ -29,8 +29,7 @@ import { fetchMusicLibraryFromS3, uploadToS3, getS3PresignedUrl, isS3Configured,
 import { getFallbackFaqResponse } from "./src/config/supportFaqs";
 import { dispatchSupportTicketEmail, dispatchEnterpriseContactEmail, ADMIN_PRIMARY_EMAIL } from "./src/lib/mailService";
 import { flexibleKeywordMatch } from "./src/lib/keywordMatcher";
-import { handleMetaWebhookVerify, handleMetaWebhookEvent } from "./src/controllers/metaWebhookController";
-import fs from "fs";
+import { metawebookController } from "./src/controllers/metawebookController";
 
 dotenv.config();
 
