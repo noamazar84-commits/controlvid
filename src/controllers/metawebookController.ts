@@ -1,2 +1,2 @@
-export const metawebookController = {};
-export type MetawebookEvent = any;
+export const metawebookController = null;
+export type MetawebookEvent = unknown;
