@@ -2,32 +2,8 @@ import express from "express";
 import path from "path";
 import { GoogleGenAI, Type } from "@google/genai";
 import dotenv from "dotenv";
-import { 
-  processWhopWebhookPayment, 
-  getWhopReconciliationReport,
-  getQuotaAndTierForWhopPlan,
-  deductUserCredits, 
-  handleRegenerateBilling, 
-  saveLeadEmail,
-  getSupportTickets,
-  saveSupportTicket,
-  getEnterpriseRequests,
-  saveEnterpriseRequest,
-  getDMAutomationRules,
-  saveDMAutomationRule,
-  deleteDMAutomationRule,
-  getUsers,
-  createUsageLog,
-  getAffiliates,
-  getReferrals,
-  updateAffiliateStatus,
-  triggerPayout
-} from "./src/lib/firebase";
-import { getNicheAssetBundle, generateSpeech, renderVideoWithEngine, generateVideoWithReplicateSVD, NicheAssetBundle, NICHE_ASSET_BUNDLES, applyMusicThemeOverride, applyCaptionStyleOverride } from "./src/lib/videoEngine";
-import { generateVideoWithReplicate, generateVoiceWithElevenLabs, transcribeAudioWithWhisper, transcribeAudioWithSelfHostedWhisper, transcribeAudioBufferWithWhisper, transcribeAudioBufferWithSelfHostedWhisper, checkExternalApisHealth } from "./src/lib/externalApis";
-import { fetchMusicLibraryFromS3, uploadToS3, getS3PresignedUrl, isS3Configured, resolveTrackAudioUrl } from "./src/lib/s3Storage";
-import { getFallbackFaqResponse } from "./src/config/supportFaqs";
-import { dispatchSupportTicketEmail, dispatchEnterpriseContactEmail, ADMIN_PRIMARY_EMAIL } from "./src/lib/mailService";
+const firebaseLib: any = {};
+
 import { flexibleKeywordMatch } from "./src/lib/keywordMatcher";
 import { metawebookController } from "./src/controllers/metawebookController";
 
