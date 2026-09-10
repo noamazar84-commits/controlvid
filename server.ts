@@ -1,5 +1,4 @@
-const handleMetawebookVerify = (req: any, res: any) => res.status(200).send("OK");
-const handleMetawebookEvent = (req: any, res: any) => res.status(200).send("OK");
+const handleMetawebookVerify = (req: any, res: any) => res.sendStatus(200);
 import express from "express";
 import path from "path";
 import { GoogleGenAI, Type } from "@google/genai";
