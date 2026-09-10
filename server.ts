@@ -1,4 +1,4 @@
-import { handleMetaWebhookVerify } from './metaWebhookController';
+import { handleMetaWebhookVerify, handleMetaWebhookEvent } from './metawebhookController';
 import express from "express";
 import path from "path";
 import { GoogleGenAI, Type } from "@google/genai";
