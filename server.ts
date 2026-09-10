@@ -1,4 +1,4 @@
-const handleMetawebookVerify = (req: any, res: any) => res.sendStatus(200);
+
 import express from "express";
 import path from "path";
 import { GoogleGenAI, Type } from "@google/genai";
@@ -6,7 +6,7 @@ import dotenv from "dotenv";
 const firebaseLib: any = {};
 
 
-import { metawebookController } from "./src/controllers/metawebookController";
+import { handleMetawebookVerify, handleMetawebookEvent } from "./src/controllers/metawebookController";
 
 dotenv.config();
 
