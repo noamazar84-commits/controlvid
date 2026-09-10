@@ -6,7 +6,17 @@ import dotenv from "dotenv";
 const firebaseLib: any = {};
 
 
-import { handleMetawebookVerify, handleMetawebookEvent } from "./src/controllers/metawebookController";
+const handleMetawebookVerify = (req: any, res: any) => {
+  const mode = req.query['hub.mode'];
+  const token = req.query['hub.verify_token'];
+  const challenge = req.query['hub.challenge'];
+  if (mode && token) {
+    res.status(200).send(challenge);
+  } else {
+    res.sendStatus(403);
+  }
+};
+const handleMetawebookEvent = (req: any, res: any) => res.sendStatus(200);
 
 dotenv.config();
 
