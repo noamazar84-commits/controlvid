@@ -11,7 +11,7 @@
     "lint": "tsc --noEmit"
   },
   "dependencies": {
-    "@google/genai": "^0.1.1",
+    "@google/genai": "latest",
     "@aws-sdk/client-s3": "^3.1111.0",
     "axios": "^1.19.0",
     "dotenv": "^17.2.3",
